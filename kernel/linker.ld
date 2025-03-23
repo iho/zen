@@ -8,7 +8,6 @@ SECTIONS {
         *(.text)
     }
 
-
     .rodata : ALIGN(4K) {
         *(.rodata)
     }
