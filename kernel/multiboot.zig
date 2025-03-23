@@ -117,8 +117,10 @@ const MAGIC = u32(0x1BADB002);
 const ALIGN = u32(1 << 0);
 const MEMINFO = u32(1 << 1);
 const FLAGS = ALIGN | MEMINFO;
-export const multiboot_header align(4)  = MultibootHeader{
+const multiboot_header align(4) = MultibootHeader{
     .magic = MAGIC,
     .flags = FLAGS,
     .checksum = ~(MAGIC +% FLAGS) +% 1,
 };
+
+export const multiboot = multiboot_header;
