@@ -8,6 +8,10 @@ SECTIONS {
         *(.text)
     }
 
+    .multiboot : {
+        KEEP(*(.multiboot_header)) 
+    }
+
     .rodata : ALIGN(4K) {
         *(.rodata)
     }

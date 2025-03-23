@@ -113,16 +113,12 @@ const MultibootHeader = packed struct {
 };
 // NOTE: this structure is incomplete.
 
-// Place the header at the very beginning of the binary.
-export const multiboot_header align(4) linksection(".multiboot") = multiboot: {
-    const MAGIC   = u32(0x1BADB002);  // Magic number for validation.
-    const ALIGN   = u32(1 << 0);      // Align loaded modules.
-    const MEMINFO = u32(1 << 1);      // Receive a memory map from the bootloader.
-    const FLAGS   = ALIGN | MEMINFO;  // Combine the flags.
-
-    break :multiboot MultibootHeader {
-        .magic    = MAGIC,
-        .flags    = FLAGS,
-        .checksum = ~(MAGIC +% FLAGS) +% 1,
-    };
+const MAGIC = u32(0x1BADB002);
+const ALIGN = u32(1 << 0);
+const MEMINFO = u32(1 << 1);
+const FLAGS = ALIGN | MEMINFO;
+export const multiboot_header align(4)  = MultibootHeader{
+    .magic = MAGIC,
+    .flags = FLAGS,
+    .checksum = ~(MAGIC +% FLAGS) +% 1,
 };
