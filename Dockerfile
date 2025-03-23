@@ -26,4 +26,4 @@ ENV PATH="/zig/zig-linux-x86_64-0.3.0:${PATH}"
 WORKDIR /project
 
 # Set default command
-CMD ["zig", "version"]
+CMD ["zig", "build"]

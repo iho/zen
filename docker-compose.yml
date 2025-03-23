@@ -9,4 +9,4 @@ services:
     volumes:
       - .:/project
     working_dir: /project
-    command: ["zig", "build"]
+    command: ["zig", "build" ]
